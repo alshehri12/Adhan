@@ -87,6 +87,17 @@
 "repeat_count" = "كرر";
 "times" = "مرات";
 
+/* Adhkar Section */
+"adhkar_main_title" = "الأذكار الإسلامية";
+"adhkar_main_subtitle" = "اختر من أذكار الصباح والمساء وما بعد الصلاة";
+"adhkar_morning_title" = "أذكار الصباح";
+"adhkar_evening_title" = "أذكار المساء";
+"adhkar_after_prayer_title" = "أذكار بعد الصلاة";
+"adhkar_source" = "المصدر";
+"adhkar_repeat_count" = "التكرار";
+"adhkar_current_count" = "الحالي";
+"adhkar_reset" = "إعادة تعيين";
+
 /* General */
 "done" = "تم";
 "cancel" = "إلغاء";

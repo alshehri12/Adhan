@@ -8,23 +8,68 @@
 import SwiftUI
 
 struct AdhkarView: View {
-    @State private var selectedCategory: DhikrCategory = .morning
-    @State private var searchText = ""
-    @State private var showingFavoritesOnly = false
-    
-    private let adhkar = Dhikr.sampleAdhkar
+    @StateObject private var localizationManager = LocalizationManager.shared
     
     var body: some View {
         NavigationView {
-            VStack(spacing: 0) {
-                // Search and filter bar
-                searchAndFilterSection
-                
-                // Category selection
-                categorySelector
-                
-                // Adhkar list
-                adhkarList
+            ScrollView {
+                VStack(spacing: 24) {
+                    // Header text
+                    VStack(spacing: 8) {
+                        Text("adhkar_main_title".localized)
+                            .font(.title2)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.white)
+                        
+                        Text("adhkar_main_subtitle".localized)
+                            .font(.subheadline)
+                            .foregroundColor(.white.opacity(0.8))
+                            .multilineTextAlignment(.center)
+                    }
+                    .padding(.top, 20)
+                    
+                    // Three main category squares
+                    VStack(spacing: 20) {
+                        // Morning Adhkar
+                        NavigationLink(destination: AdhkarDetailView(category: .morning)) {
+                            AdhkarCategorySquare(
+                                category: .morning,
+                                titleKey: "adhkar_morning_title",
+                                arabicTitle: "اذكار الصباح",
+                                icon: "sun.and.horizon",
+                                gradientColors: [Color.orange.opacity(0.8), Color.yellow.opacity(0.6)]
+                            )
+                        }
+                        .buttonStyle(PlainButtonStyle())
+                        
+                        // Evening Adhkar
+                        NavigationLink(destination: AdhkarDetailView(category: .evening)) {
+                            AdhkarCategorySquare(
+                                category: .evening,
+                                titleKey: "adhkar_evening_title",
+                                arabicTitle: "اذكار المساء",
+                                icon: "moon.and.stars",
+                                gradientColors: [Color.purple.opacity(0.8), Color.blue.opacity(0.6)]
+                            )
+                        }
+                        .buttonStyle(PlainButtonStyle())
+                        
+                        // After Prayer Adhkar
+                        NavigationLink(destination: AdhkarDetailView(category: .afterPrayer)) {
+                            AdhkarCategorySquare(
+                                category: .afterPrayer,
+                                titleKey: "adhkar_after_prayer_title",
+                                arabicTitle: "اذكار بعد الصلاة",
+                                icon: "hands.sparkles",
+                                gradientColors: [Color.green.opacity(0.8), Color.teal.opacity(0.6)]
+                            )
+                        }
+                        .buttonStyle(PlainButtonStyle())
+                    }
+                    .padding(.horizontal, 20)
+                    
+                    Spacer()
+                }
             }
             .background(
                 LinearGradient(
@@ -37,217 +82,183 @@ struct AdhkarView: View {
             .navigationTitle("tab_adhkar".localized)
             .navigationBarTitleDisplayMode(.large)
         }
+        .environment(\.layoutDirection, localizationManager.currentLanguage.isRTL ? .rightToLeft : .leftToRight)
     }
+}
+
+// MARK: - Adhkar Category Square
+
+struct AdhkarCategorySquare: View {
+    let category: AdhkarCategory
+    let titleKey: String
+    let arabicTitle: String
+    let icon: String
+    let gradientColors: [Color]
     
-    // MARK: - Search and Filter Section
+    @StateObject private var localizationManager = LocalizationManager.shared
+    @State private var isPressed = false
     
-    private var searchAndFilterSection: some View {
-        VStack(spacing: 12) {
-            HStack {
-                HStack {
-                    Image(systemName: "magnifyingglass")
-                        .foregroundColor(AppColors.textSecondary)
-                    
-                    TextField("search_adhkar".localized, text: $searchText)
-                        .textFieldStyle(PlainTextFieldStyle())
-                }
-                .padding()
-                .background(AppColors.cardBackground)
-                .cornerRadius(10)
-                
-                Button(action: { showingFavoritesOnly.toggle() }) {
-                    Image(systemName: showingFavoritesOnly ? "heart.fill" : "heart")
-                        .foregroundColor(showingFavoritesOnly ? AppColors.accent : AppColors.textSecondary)
+    var body: some View {
+        VStack(spacing: 16) {
+            // Icon
+            Image(systemName: icon)
+                .font(.system(size: 40, weight: .medium))
+                .foregroundColor(.white)
+            
+            // Title based on language
+            VStack(spacing: 4) {
+                if localizationManager.currentLanguage == .arabic {
+                    // Show only Arabic for Arabic users
+                    Text(arabicTitle)
                         .font(.title2)
-                }
-                .padding()
-                .background(AppColors.cardBackground)
-                .cornerRadius(10)
-            }
-        }
-        .padding()
-    }
-    
-    // MARK: - Category Selector
-    
-    private var categorySelector: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 12) {
-                ForEach(DhikrCategory.allCases, id: \.self) { category in
-                    CategoryButton(
-                        category: category,
-                        isSelected: selectedCategory == category
-                    ) {
-                        withAnimation(.easeInOut(duration: 0.3)) {
-                            selectedCategory = category
-                        }
-                    }
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                        .multilineTextAlignment(.center)
+                } else {
+                    // Show localized title first, then Arabic below for non-Arabic users
+                    Text(titleKey.localized)
+                        .font(.headline)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.white)
+                        .multilineTextAlignment(.center)
+                    
+                    Text(arabicTitle)
+                        .font(.subheadline)
+                        .fontWeight(.medium)
+                        .foregroundColor(.white.opacity(0.9))
+                        .multilineTextAlignment(.center)
                 }
             }
-            .padding(.horizontal)
         }
-        .padding(.bottom)
+        .frame(maxWidth: .infinity)
+        .frame(height: 160)
+        .padding(20)
+        .background(
+            LinearGradient(
+                colors: gradientColors,
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+        )
+        .cornerRadius(20)
+        .shadow(color: .black.opacity(0.2), radius: 8, x: 0, y: 4)
+        .scaleEffect(isPressed ? 0.95 : 1.0)
+        .animation(.easeInOut(duration: 0.1), value: isPressed)
+        .onTapGesture {
+            // Haptic feedback
+            let impactFeedback = UIImpactFeedbackGenerator(style: .light)
+            impactFeedback.impactOccurred()
+        }
+        .simultaneousGesture(
+            DragGesture(minimumDistance: 0)
+                .onChanged { _ in isPressed = true }
+                .onEnded { _ in isPressed = false }
+        )
+    }
+}
+
+// MARK: - Adhkar Detail View
+
+struct AdhkarDetailView: View {
+    let category: AdhkarCategory
+    @StateObject private var localizationManager = LocalizationManager.shared
+    @Environment(\.presentationMode) var presentationMode
+    
+    private var categoryAdhkar: [Adhkar] {
+        Adhkar.sampleAdhkar.filter { $0.category == category }
     }
     
-    // MARK: - Adhkar List
-    
-    private var adhkarList: some View {
+    var body: some View {
         ScrollView {
             LazyVStack(spacing: 16) {
-                ForEach(filteredAdhkar) { dhikr in
-                    DhikrCard(dhikr: dhikr)
+                ForEach(categoryAdhkar) { adhkar in
+                    AdhkarCard(adhkar: adhkar)
                 }
             }
             .padding()
         }
+        .background(
+            LinearGradient(
+                colors: [AppColors.gradientStart, AppColors.gradientEnd],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .ignoresSafeArea()
+        )
+        .navigationTitle(getCategoryTitle())
+        .navigationBarTitleDisplayMode(.large)
+        .environment(\.layoutDirection, localizationManager.currentLanguage.isRTL ? .rightToLeft : .leftToRight)
     }
     
-    // MARK: - Computed Properties
-    
-    private var filteredAdhkar: [Dhikr] {
-        adhkar.filter { dhikr in
-            let matchesCategory = dhikr.category == selectedCategory
-            let matchesSearch = searchText.isEmpty ||
-                dhikr.arabic.contains(searchText) ||
-                dhikr.transliteration.localizedCaseInsensitiveContains(searchText) ||
-                dhikr.translation.localizedCaseInsensitiveContains(searchText)
-            let matchesFavorites = !showingFavoritesOnly || dhikr.isFavorite
-            
-            return matchesCategory && matchesSearch && matchesFavorites
+    private func getCategoryTitle() -> String {
+        switch category {
+        case .morning:
+            return localizationManager.currentLanguage == .arabic ? "اذكار الصباح" : "adhkar_morning_title".localized
+        case .evening:
+            return localizationManager.currentLanguage == .arabic ? "اذكار المساء" : "adhkar_evening_title".localized
+        case .afterPrayer:
+            return localizationManager.currentLanguage == .arabic ? "اذكار بعد الصلاة" : "adhkar_after_prayer_title".localized
         }
     }
 }
 
-// MARK: - Category Button Component
+// MARK: - Adhkar Card
 
-struct CategoryButton: View {
-    let category: DhikrCategory
-    let isSelected: Bool
-    let action: () -> Void
-    
-    var body: some View {
-        Button(action: action) {
-            HStack(spacing: 8) {
-                Image(systemName: category.icon)
-                    .font(.caption)
-                
-                Text(category.rawValue)
-                    .font(.caption)
-                    .fontWeight(.medium)
-            }
-            .padding(.horizontal, 16)
-            .padding(.vertical, 8)
-            .background(
-                isSelected ? AppColors.primary : AppColors.cardBackground
-            )
-            .foregroundColor(
-                isSelected ? .white : AppColors.textPrimary
-            )
-            .cornerRadius(20)
-            .shadow(color: .black.opacity(0.1), radius: 2, x: 0, y: 1)
-        }
-        .buttonStyle(PlainButtonStyle())
-    }
-}
-
-// MARK: - Dhikr Card Component
-
-struct DhikrCard: View {
-    let dhikr: Dhikr
+struct AdhkarCard: View {
+    let adhkar: Adhkar
+    @StateObject private var localizationManager = LocalizationManager.shared
     @State private var currentCount = 0
     @State private var isFavorite = false
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            // Header with favorite button
+        VStack(alignment: getAlignment(), spacing: 16) {
+            // Header with favorite button and source
             HStack {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(dhikr.category.rawValue)
-                        .font(.caption)
-                        .foregroundColor(AppColors.textSecondary)
-                    
-                    if let source = dhikr.source {
-                        Text("Source: \(source)")
-                            .font(.caption2)
-                            .foregroundColor(AppColors.textSecondary)
-                    }
-                }
-                
-                Spacer()
-                
-                Button(action: { isFavorite.toggle() }) {
-                    Image(systemName: isFavorite ? "heart.fill" : "heart")
-                        .foregroundColor(isFavorite ? AppColors.accent : AppColors.textSecondary)
+                if localizationManager.currentLanguage.isRTL {
+                    favoriteButton
+                    Spacer()
+                    sourceInfo
+                } else {
+                    sourceInfo
+                    Spacer()
+                    favoriteButton
                 }
             }
             
-            // Arabic text
-            Text(dhikr.arabic)
+            // Arabic text (always displayed prominently)
+            Text(adhkar.arabicText)
                 .font(.title2)
                 .fontWeight(.medium)
                 .foregroundColor(AppColors.textPrimary)
-                .multilineTextAlignment(.trailing)
-                .frame(maxWidth: .infinity, alignment: .trailing)
+                .multilineTextAlignment(localizationManager.currentLanguage.isRTL ? .trailing : .center)
+                .frame(maxWidth: .infinity, alignment: localizationManager.currentLanguage.isRTL ? .trailing : .center)
                 .padding(.vertical, 8)
             
-            // Transliteration
-            Text(dhikr.transliteration)
-                .font(.body)
-                .foregroundColor(AppColors.textSecondary)
-                .italic()
-                .multilineTextAlignment(.leading)
-            
-            // Translation
-            Text(dhikr.translation)
-                .font(.body)
-                .foregroundColor(AppColors.textPrimary)
-                .multilineTextAlignment(.leading)
-            
-            // Counter section (if applicable)
-            if let count = dhikr.count {
-                HStack {
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text("repeat_count".localized + ": \(count) " + "times".localized)
-                            .font(.caption)
+            // Conditional transliteration and translation (only for non-Arabic)
+            if localizationManager.currentLanguage != .arabic {
+                VStack(spacing: 8) {
+                    // Transliteration
+                    if let transliteration = adhkar.transliteration {
+                        Text(transliteration)
+                            .font(.body)
                             .foregroundColor(AppColors.textSecondary)
-                        
-                        Text("Current: \(currentCount)")
-                            .font(.caption)
-                            .foregroundColor(AppColors.primary)
+                            .italic()
+                            .multilineTextAlignment(.center)
                     }
                     
-                    Spacer()
-                    
-                    HStack(spacing: 12) {
-                        Button(action: { 
-                            if currentCount > 0 {
-                                currentCount -= 1
-                            }
-                        }) {
-                            Image(systemName: "minus.circle.fill")
-                                .foregroundColor(AppColors.textSecondary)
-                                .font(.title2)
-                        }
-                        .disabled(currentCount == 0)
-                        
-                        Button(action: { 
-                            currentCount += 1
-                        }) {
-                            Image(systemName: "plus.circle.fill")
-                                .foregroundColor(AppColors.primary)
-                                .font(.title2)
-                        }
-                        
-                        Button(action: { 
-                            currentCount = 0
-                        }) {
-                            Text("clear".localized)
-                                .font(.caption)
-                                .foregroundColor(AppColors.accent)
-                        }
+                    // Translation in current language
+                    if let translation = getTranslation() {
+                        Text(translation)
+                            .font(.body)
+                            .foregroundColor(AppColors.textSecondary)
+                            .multilineTextAlignment(.center)
                     }
                 }
-                .padding(.top, 8)
+            }
+            
+            // Counter section (if applicable)
+            if let repeatCount = adhkar.repeatCount {
+                counterSection(repeatCount: repeatCount)
             }
         }
         .padding()
@@ -255,7 +266,92 @@ struct DhikrCard: View {
         .cornerRadius(16)
         .shadow(color: .black.opacity(0.1), radius: 8, x: 0, y: 4)
         .onAppear {
-            isFavorite = dhikr.isFavorite
+            isFavorite = adhkar.isFavorite
+        }
+    }
+    
+    private var sourceInfo: some View {
+        VStack(alignment: localizationManager.currentLanguage.isRTL ? .trailing : .leading, spacing: 4) {
+            if let source = adhkar.source {
+                Text("adhkar_source".localized + ": \(source)")
+                    .font(.caption2)
+                    .foregroundColor(AppColors.textSecondary)
+            }
+        }
+    }
+    
+    private var favoriteButton: some View {
+        Button(action: { isFavorite.toggle() }) {
+            Image(systemName: isFavorite ? "heart.fill" : "heart")
+                .foregroundColor(isFavorite ? AppColors.accent : AppColors.textSecondary)
+        }
+    }
+    
+    private func counterSection(repeatCount: Int) -> some View {
+        VStack(spacing: 12) {
+            HStack {
+                Text("adhkar_repeat_count".localized + ": \(repeatCount)")
+                    .font(.caption)
+                    .foregroundColor(AppColors.textSecondary)
+                Spacer()
+                Text("adhkar_current_count".localized + ": \(currentCount)")
+                    .font(.caption)
+                    .foregroundColor(AppColors.primary)
+            }
+            
+            HStack(spacing: 12) {
+                Button(action: { 
+                    if currentCount > 0 {
+                        currentCount -= 1
+                    }
+                }) {
+                    Image(systemName: "minus.circle.fill")
+                        .foregroundColor(AppColors.textSecondary)
+                        .font(.title2)
+                }
+                .disabled(currentCount == 0)
+                
+                Spacer()
+                
+                Button(action: { 
+                    currentCount += 1
+                    // Haptic feedback
+                    let impactFeedback = UIImpactFeedbackGenerator(style: .light)
+                    impactFeedback.impactOccurred()
+                }) {
+                    Image(systemName: "plus.circle.fill")
+                        .foregroundColor(AppColors.primary)
+                        .font(.title2)
+                }
+                
+                Spacer()
+                
+                Button(action: { 
+                    currentCount = 0
+                }) {
+                    Text("adhkar_reset".localized)
+                        .font(.caption)
+                        .foregroundColor(AppColors.accent)
+                }
+            }
+        }
+        .padding(.top, 8)
+    }
+    
+    private func getAlignment() -> HorizontalAlignment {
+        return localizationManager.currentLanguage.isRTL ? .trailing : .leading
+    }
+    
+    private func getTranslation() -> String? {
+        switch localizationManager.currentLanguage {
+        case .english:
+            return adhkar.englishTranslation
+        case .french:
+            return adhkar.frenchTranslation
+        case .urdu:
+            return adhkar.urduTranslation
+        case .arabic:
+            return nil // No translation needed for Arabic
         }
     }
 }

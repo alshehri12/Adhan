@@ -114,4 +114,15 @@
 "restart_required" = "Redémarrage requis";
 "restart_message" = "Veuillez redémarrer l'application pour que le changement de langue prenne effet.";
 "restart_now" = "Redémarrer maintenant";
-"restart_later" = "Plus tard"; 
+"restart_later" = "Plus tard";
+
+/* Adhkar Section */
+"adhkar_main_title" = "Supplications Islamiques";
+"adhkar_main_subtitle" = "Choisissez parmi les supplications du matin, du soir et après la prière";
+"adhkar_morning_title" = "Adhkar du Matin";
+"adhkar_evening_title" = "Adhkar du Soir";
+"adhkar_after_prayer_title" = "Adhkar Après la Prière";
+"adhkar_source" = "Source";
+"adhkar_repeat_count" = "Répéter";
+"adhkar_current_count" = "Actuel";
+"adhkar_reset" = "Réinitialiser"; 

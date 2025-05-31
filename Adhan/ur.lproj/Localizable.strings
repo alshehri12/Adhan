@@ -87,6 +87,17 @@
 "repeat_count" = "دہرائیں";
 "times" = "بار";
 
+/* Adhkar Section */
+"adhkar_main_title" = "اسلامی دعائیں";
+"adhkar_main_subtitle" = "صبح، شام اور نماز کے بعد کی دعاؤں میں سے انتخاب کریں";
+"adhkar_morning_title" = "صبح کے اذکار";
+"adhkar_evening_title" = "شام کے اذکار";
+"adhkar_after_prayer_title" = "نماز کے بعد کے اذکار";
+"adhkar_source" = "ماخذ";
+"adhkar_repeat_count" = "تکرار";
+"adhkar_current_count" = "موجودہ";
+"adhkar_reset" = "دوبارہ سیٹ کریں";
+
 /* General */
 "done" = "مکمل";
 "cancel" = "منسوخ";
