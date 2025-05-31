@@ -1,0 +1,117 @@
+/* 
+   Localizable.strings (Arabic)
+   Adhan
+*/
+
+/* Tab Bar */
+"tab_salat" = "الصلاة";
+"tab_qiblah" = "القبلة";
+"tab_adhkar" = "الأذكار";
+"tab_settings" = "الإعدادات";
+
+/* Prayer Names */
+"prayer_fajr" = "الفجر";
+"prayer_shrouq" = "الشروق";
+"prayer_dhuhr" = "الظهر";
+"prayer_asr" = "العصر";
+"prayer_maghrib" = "المغرب";
+"prayer_isha" = "العشاء";
+
+/* Prayer Times View */
+"next_prayer" = "الصلاة التالية";
+"time_remaining" = "الوقت المتبقي";
+"today_prayer_times" = "مواقيت الصلاة اليوم";
+"loading_prayer_times" = "جاري تحميل مواقيت الصلاة...";
+"unable_load_times" = "تعذر تحميل مواقيت الصلاة";
+"try_again" = "حاول مرة أخرى";
+"retry" = "إعادة المحاولة";
+"location_required" = "الموقع مطلوب";
+"location_permission_message" = "يرجى تفعيل خدمات الموقع للحصول على مواقيت صلاة دقيقة لمنطقتك.";
+
+/* Settings */
+"prayer_settings" = "إعدادات الصلاة";
+"calculation_method" = "طريقة الحساب";
+"juristic_method" = "المذهب الفقهي";
+"notifications_title" = "الإشعارات";
+"notifications_enabled" = "إشعارات الصلاة";
+"adhan_sound" = "صوت الأذان";
+"vibrations" = "الاهتزاز";
+"app_settings" = "إعدادات التطبيق";
+"language_setting" = "اللغة";
+"about" = "حول التطبيق";
+"version" = "الإصدار";
+"developer" = "المطور";
+
+/* Calculation Methods */
+"method_umm_alqura" = "جامعة أم القرى، مكة المكرمة";
+"method_mwl" = "رابطة العالم الإسلامي";
+"method_isna" = "الجمعية الإسلامية لأمريكا الشمالية";
+"method_egyptian" = "الهيئة المصرية العامة للمساحة";
+"method_karachi" = "جامعة العلوم الإسلامية، كراتشي";
+
+/* Juristic Methods */
+"juristic_shafi" = "الشافعي/المالكي/الحنبلي";
+"juristic_hanafi" = "الحنفي";
+
+/* Qiblah */
+"qiblah_direction" = "اتجاه القبلة";
+"distance_to_makkah" = "المسافة إلى مكة";
+"compass_instructions" = "وجه جهازك نحو الاتجاه المبين أدناه";
+"calibrate_compass" = "معايرة البوصلة";
+"accuracy_notice" = "للحصول على أفضل دقة، امسك الجهاز بشكل مسطح وبعيداً عن الأجسام المغناطيسية";
+
+/* Qiblah Instructions */
+"qibla_how_to_use" = "كيفية الاستخدام";
+"qibla_instruction_red" = "أحمر: الجهاز يشير بعيداً عن القبلة";
+"qibla_instruction_yellow" = "أصفر: قريب من اتجاه القبلة";
+"qibla_instruction_green" = "أخضر: ممتاز! الجهاز يشير إلى القبلة";
+"qibla_instruction_hold_device" = "امسك الجهاز بشكل مسطح وأدره حتى يصبح أخضر";
+"qibla_instruction_calibrate" = "قم بمعايرة البوصلة إذا كانت الدقة ضعيفة";
+
+/* Qiblah Display Labels */
+"qibla_device_heading" = "الجهاز";
+"qibla_off_by" = "انحراف";
+"qibla_compass_not_available" = "البوصلة غير متاحة";
+"qibla_compass_error_message" = "هذا الجهاز لا يدعم وظيفة البوصلة أو الوصول إلى البوصلة غير مسموح.";
+
+/* Adhkar */
+"morning_adhkar" = "أذكار الصباح";
+"evening_adhkar" = "أذكار المساء";
+"after_prayer" = "بعد الصلاة";
+"before_sleep" = "قبل النوم";
+"upon_waking" = "عند الاستيقاظ";
+"daily_supplications" = "الأدعية اليومية";
+"protection" = "الحماية";
+"search_adhkar" = "البحث في الأذكار";
+"favorite_adhkar" = "الأذكار المفضلة";
+"repeat_count" = "كرر";
+"times" = "مرات";
+
+/* General */
+"done" = "تم";
+"cancel" = "إلغاء";
+"save" = "حفظ";
+"delete" = "حذف";
+"edit" = "تعديل";
+"search" = "بحث";
+"favorites" = "المفضلة";
+"clear" = "مسح";
+"ok" = "موافق";
+"yes" = "نعم";
+"no" = "لا";
+"error" = "خطأ";
+"success" = "نجح";
+"warning" = "تحذير";
+"info" = "معلومات";
+
+/* Language Names */
+"language_english" = "English";
+"language_arabic" = "العربية";
+"language_french" = "Français";
+"language_urdu" = "اردو";
+
+/* Alerts */
+"restart_required" = "إعادة التشغيل مطلوبة";
+"restart_message" = "يرجى إعادة تشغيل التطبيق لتطبيق تغيير اللغة.";
+"restart_now" = "أعد التشغيل الآن";
+"restart_later" = "لاحقاً"; 

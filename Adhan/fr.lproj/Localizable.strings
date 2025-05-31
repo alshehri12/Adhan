@@ -1,0 +1,117 @@
+/* 
+   Localizable.strings (French)
+   Adhan
+*/
+
+/* Tab Bar */
+"tab_salat" = "Salat";
+"tab_qiblah" = "Qibla";
+"tab_adhkar" = "Adhkar";
+"tab_settings" = "Paramètres";
+
+/* Prayer Names */
+"prayer_fajr" = "Fajr";
+"prayer_shrouq" = "Lever du soleil";
+"prayer_dhuhr" = "Dhuhr";
+"prayer_asr" = "Asr";
+"prayer_maghrib" = "Maghrib";
+"prayer_isha" = "Isha";
+
+/* Prayer Times View */
+"next_prayer" = "Prochaine prière";
+"time_remaining" = "Temps restant";
+"today_prayer_times" = "Horaires de prière d'aujourd'hui";
+"loading_prayer_times" = "Chargement des horaires de prière...";
+"unable_load_times" = "Impossible de charger les horaires de prière";
+"try_again" = "Réessayer";
+"retry" = "Réessayer";
+"location_required" = "Localisation requise";
+"location_permission_message" = "Veuillez activer les services de localisation pour obtenir des horaires de prière précis pour votre région.";
+
+/* Settings */
+"prayer_settings" = "Paramètres de prière";
+"calculation_method" = "Méthode de calcul";
+"juristic_method" = "Méthode juridique";
+"notifications_title" = "Notifications";
+"notifications_enabled" = "Notifications de prière";
+"adhan_sound" = "Son de l'adhan";
+"vibrations" = "Vibrations";
+"app_settings" = "Paramètres de l'application";
+"language_setting" = "Langue";
+"about" = "À propos";
+"version" = "Version";
+"developer" = "Développeur";
+
+/* Calculation Methods */
+"method_umm_alqura" = "Université Umm al-Qura, La Mecque";
+"method_mwl" = "Ligue islamique mondiale";
+"method_isna" = "Société islamique d'Amérique du Nord";
+"method_egyptian" = "Autorité générale égyptienne d'arpentage";
+"method_karachi" = "Université des sciences islamiques, Karachi";
+
+/* Juristic Methods */
+"juristic_shafi" = "Chafi'i/Maliki/Hanbali";
+"juristic_hanafi" = "Hanafi";
+
+/* Qiblah */
+"qiblah_direction" = "Direction de la Qibla";
+"distance_to_makkah" = "Distance vers La Mecque";
+"compass_instructions" = "Pointez votre appareil vers la direction indiquée ci-dessous";
+"calibrate_compass" = "Calibrer la boussole";
+"accuracy_notice" = "Pour une meilleure précision, tenez l'appareil à plat et loin des objets magnétiques";
+
+/* Qiblah Instructions */
+"qibla_how_to_use" = "Comment utiliser";
+"qibla_instruction_red" = "Rouge: L'appareil pointe loin de la Qibla";
+"qibla_instruction_yellow" = "Jaune: Proche de la direction de la Qibla";
+"qibla_instruction_green" = "Vert: Parfait! L'appareil pointe vers la Qibla";
+"qibla_instruction_hold_device" = "Tenez l'appareil à plat et tournez jusqu'au vert";
+"qibla_instruction_calibrate" = "Calibrez la boussole si la précision est faible";
+
+/* Qiblah Display Labels */
+"qibla_device_heading" = "Appareil";
+"qibla_off_by" = "Écart de";
+"qibla_compass_not_available" = "Boussole non disponible";
+"qibla_compass_error_message" = "Cet appareil ne prend pas en charge la fonctionnalité de boussole ou l'accès à la boussole n'est pas autorisé.";
+
+/* Adhkar */
+"morning_adhkar" = "Adhkar du matin";
+"evening_adhkar" = "Adhkar du soir";
+"after_prayer" = "Après la prière";
+"before_sleep" = "Avant de dormir";
+"upon_waking" = "Au réveil";
+"daily_supplications" = "Supplications quotidiennes";
+"protection" = "Protection";
+"search_adhkar" = "Rechercher des adhkar";
+"favorite_adhkar" = "Adhkar favoris";
+"repeat_count" = "Répéter";
+"times" = "fois";
+
+/* General */
+"done" = "Terminé";
+"cancel" = "Annuler";
+"save" = "Enregistrer";
+"delete" = "Supprimer";
+"edit" = "Modifier";
+"search" = "Rechercher";
+"favorites" = "Favoris";
+"clear" = "Effacer";
+"ok" = "OK";
+"yes" = "Oui";
+"no" = "Non";
+"error" = "Erreur";
+"success" = "Succès";
+"warning" = "Avertissement";
+"info" = "Information";
+
+/* Language Names */
+"language_english" = "English";
+"language_arabic" = "العربية";
+"language_french" = "Français";
+"language_urdu" = "اردو";
+
+/* Alerts */
+"restart_required" = "Redémarrage requis";
+"restart_message" = "Veuillez redémarrer l'application pour que le changement de langue prenne effet.";
+"restart_now" = "Redémarrer maintenant";
+"restart_later" = "Plus tard"; 

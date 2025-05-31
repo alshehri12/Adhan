@@ -1,0 +1,117 @@
+/* 
+   Localizable.strings (Urdu)
+   Adhan
+*/
+
+/* Tab Bar */
+"tab_salat" = "نماز";
+"tab_qiblah" = "قبلہ";
+"tab_adhkar" = "اذکار";
+"tab_settings" = "ترتیبات";
+
+/* Prayer Names */
+"prayer_fajr" = "فجر";
+"prayer_shrouq" = "طلوع آفتاب";
+"prayer_dhuhr" = "ظہر";
+"prayer_asr" = "عصر";
+"prayer_maghrib" = "مغرب";
+"prayer_isha" = "عشاء";
+
+/* Prayer Times View */
+"next_prayer" = "اگلی نماز";
+"time_remaining" = "باقی وقت";
+"today_prayer_times" = "آج کے نماز کے اوقات";
+"loading_prayer_times" = "نماز کے اوقات لوڈ ہو رہے ہیں...";
+"unable_load_times" = "نماز کے اوقات لوڈ نہیں ہو سکے";
+"try_again" = "دوبارہ کوشش کریں";
+"retry" = "دوبارہ کوشش";
+"location_required" = "مقام درکار";
+"location_permission_message" = "برائے کرم اپنے علاقے کے لیے درست نماز کے اوقات حاصل کرنے کے لیے لوکیشن سروسز کو فعال کریں۔";
+
+/* Settings */
+"prayer_settings" = "نماز کی ترتیبات";
+"calculation_method" = "حساب کا طریقہ";
+"juristic_method" = "فقہی طریقہ";
+"notifications_title" = "اطلاعات";
+"notifications_enabled" = "نماز کی اطلاعات";
+"adhan_sound" = "اذان کی آواز";
+"vibrations" = "کمپن";
+"app_settings" = "ایپ کی ترتیبات";
+"language_setting" = "زبان";
+"about" = "بارے میں";
+"version" = "ورژن";
+"developer" = "ڈویلپر";
+
+/* Calculation Methods */
+"method_umm_alqura" = "جامعہ ام القریٰ، مکہ مکرمہ";
+"method_mwl" = "رابطہ عالم اسلامی";
+"method_isna" = "اسلامک سوسائٹی آف نارتھ امریکہ";
+"method_egyptian" = "مصری جنرل اتھارٹی آف سروے";
+"method_karachi" = "جامعہ علوم اسلامیہ، کراچی";
+
+/* Juristic Methods */
+"juristic_shafi" = "شافعی/مالکی/حنبلی";
+"juristic_hanafi" = "حنفی";
+
+/* Qiblah */
+"qiblah_direction" = "قبلے کی سمت";
+"distance_to_makkah" = "مکہ تک فاصلہ";
+"compass_instructions" = "اپنا آلہ نیچے دکھائی گئی سمت کی طرف موڑیں";
+"calibrate_compass" = "کمپاس کو درست کریں";
+"accuracy_notice" = "بہترین درستگی کے لیے، آلے کو ہموار رکھیں اور مقناطیسی اشیاء سے دور رکھیں";
+
+/* Qiblah Instructions */
+"qibla_how_to_use" = "استعمال کا طریقہ";
+"qibla_instruction_red" = "سرخ: آلہ قبلہ سے دور اشارہ کر رہا ہے";
+"qibla_instruction_yellow" = "پیلا: قبلہ کی سمت کے قریب";
+"qibla_instruction_green" = "سبز: بہترین! آلہ قبلہ کی طرف اشارہ کر رہا ہے";
+"qibla_instruction_hold_device" = "آلہ کو چپٹا رکھیں اور سبز ہونے تک گھمائیں";
+"qibla_instruction_calibrate" = "کمپاس کو کیلیبریٹ کریں اگر درستگی کم ہے";
+
+/* Qiblah Display Labels */
+"qibla_device_heading" = "آلہ";
+"qibla_off_by" = "فرق";
+"qibla_compass_not_available" = "کمپاس دستیاب نہیں";
+"qibla_compass_error_message" = "یہ آلہ کمپاس کی سہولت کو سپورٹ نہیں کرتا یا کمپاس تک رسائی کی اجازت نہیں ہے۔";
+
+/* Adhkar */
+"morning_adhkar" = "صبح کے اذکار";
+"evening_adhkar" = "شام کے اذکار";
+"after_prayer" = "نماز کے بعد";
+"before_sleep" = "سونے سے پہلے";
+"upon_waking" = "بیدار ہونے پر";
+"daily_supplications" = "روزانہ کی دعائیں";
+"protection" = "حفاظت";
+"search_adhkar" = "اذکار تلاش کریں";
+"favorite_adhkar" = "پسندیدہ اذکار";
+"repeat_count" = "دہرائیں";
+"times" = "بار";
+
+/* General */
+"done" = "مکمل";
+"cancel" = "منسوخ";
+"save" = "محفوظ کریں";
+"delete" = "حذف";
+"edit" = "تبدیلی";
+"search" = "تلاش";
+"favorites" = "پسندیدہ";
+"clear" = "صاف";
+"ok" = "ٹھیک";
+"yes" = "ہاں";
+"no" = "نہیں";
+"error" = "خرابی";
+"success" = "کامیابی";
+"warning" = "انتباہ";
+"info" = "معلومات";
+
+/* Language Names */
+"language_english" = "English";
+"language_arabic" = "العربية";
+"language_french" = "Français";
+"language_urdu" = "اردو";
+
+/* Alerts */
+"restart_required" = "دوبارہ شروع کرنا ضروری";
+"restart_message" = "زبان کی تبدیلی کے لیے برائے کرم ایپ کو دوبارہ شروع کریں۔";
+"restart_now" = "اب دوبارہ شروع کریں";
+"restart_later" = "بعد میں"; 

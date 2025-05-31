@@ -1,0 +1,117 @@
+/* 
+   Localizable.strings (English - Base)
+   Adhan
+*/
+
+/* Tab Bar */
+"tab_salat" = "Salat";
+"tab_qiblah" = "Qiblah";
+"tab_adhkar" = "Adhkar";
+"tab_settings" = "Settings";
+
+/* Prayer Names */
+"prayer_fajr" = "Fajr";
+"prayer_shrouq" = "Shrouq";
+"prayer_dhuhr" = "Dhuhr";
+"prayer_asr" = "Asr";
+"prayer_maghrib" = "Maghrib";
+"prayer_isha" = "Isha";
+
+/* Prayer Times View */
+"next_prayer" = "Next Prayer";
+"time_remaining" = "Time Remaining";
+"today_prayer_times" = "Today's Prayer Times";
+"loading_prayer_times" = "Loading prayer times...";
+"unable_load_times" = "Unable to load prayer times";
+"try_again" = "Try Again";
+"retry" = "Retry";
+"location_required" = "Location Required";
+"location_permission_message" = "Please enable location services to get accurate prayer times for your area.";
+
+/* Settings */
+"prayer_settings" = "Prayer Settings";
+"calculation_method" = "Calculation Method";
+"juristic_method" = "Juristic Method";
+"notifications_title" = "Notifications";
+"notifications_enabled" = "Prayer Notifications";
+"adhan_sound" = "Adhan Sound";
+"vibrations" = "Vibrations";
+"app_settings" = "App Settings";
+"language_setting" = "Language";
+"about" = "About";
+"version" = "Version";
+"developer" = "Developer";
+
+/* Calculation Methods */
+"method_umm_alqura" = "Umm al-Qura University, Makkah";
+"method_mwl" = "Muslim World League";
+"method_isna" = "Islamic Society of North America";
+"method_egyptian" = "Egyptian General Authority of Survey";
+"method_karachi" = "University of Islamic Sciences, Karachi";
+
+/* Juristic Methods */
+"juristic_shafi" = "Shafi/Maliki/Hanbali";
+"juristic_hanafi" = "Hanafi";
+
+/* Qiblah */
+"qiblah_direction" = "Qiblah Direction";
+"distance_to_makkah" = "Distance to Makkah";
+"compass_instructions" = "Point your device towards the direction shown below";
+"calibrate_compass" = "Calibrate Compass";
+"accuracy_notice" = "For best accuracy, hold device flat and away from magnetic objects";
+
+/* Qiblah Instructions */
+"qibla_how_to_use" = "How to Use";
+"qibla_instruction_red" = "Red: Device pointing away from Qibla";
+"qibla_instruction_yellow" = "Yellow: Getting close to Qibla direction";
+"qibla_instruction_green" = "Green: Perfect! Device pointing to Qibla";
+"qibla_instruction_hold_device" = "Hold device flat and rotate until green";
+"qibla_instruction_calibrate" = "Calibrate compass if accuracy is poor";
+
+/* Qiblah Display Labels */
+"qibla_device_heading" = "Device";
+"qibla_off_by" = "Off by";
+"qibla_compass_not_available" = "Compass Not Available";
+"qibla_compass_error_message" = "This device doesn't support compass functionality or compass access is not permitted.";
+
+/* Adhkar */
+"morning_adhkar" = "Morning Adhkar";
+"evening_adhkar" = "Evening Adhkar";
+"after_prayer" = "After Prayer";
+"before_sleep" = "Before Sleep";
+"upon_waking" = "Upon Waking";
+"daily_supplications" = "Daily Supplications";
+"protection" = "Protection";
+"search_adhkar" = "Search Adhkar";
+"favorite_adhkar" = "Favorite Adhkar";
+"repeat_count" = "Repeat";
+"times" = "times";
+
+/* General */
+"done" = "Done";
+"cancel" = "Cancel";
+"save" = "Save";
+"delete" = "Delete";
+"edit" = "Edit";
+"search" = "Search";
+"favorites" = "Favorites";
+"clear" = "Clear";
+"ok" = "OK";
+"yes" = "Yes";
+"no" = "No";
+"error" = "Error";
+"success" = "Success";
+"warning" = "Warning";
+"info" = "Information";
+
+/* Language Names */
+"language_english" = "English";
+"language_arabic" = "العربية";
+"language_french" = "Français";
+"language_urdu" = "اردو";
+
+/* Alerts */
+"restart_required" = "Restart Required";
+"restart_message" = "Please restart the app for the language change to take effect.";
+"restart_now" = "Restart Now";
+"restart_later" = "Later"; 
