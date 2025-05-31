@@ -247,7 +247,7 @@ struct SalatView: View {
                         name: localizedPrayerName(prayer.name),
                         arabicName: prayer.arabicName,
                         time: prayer.time,
-                        isNext: prayer.name == nextPrayer(prayerTimes: prayerTimes).name,
+                        isNext: isNextObligatoryPrayer(prayer.name, prayerTimes: prayerTimes),
                         icon: Prayer(rawValue: prayer.name)?.icon ?? "clock"
                     )
                 }
@@ -268,24 +268,71 @@ struct SalatView: View {
         }
     }
     
+    private func isNextObligatoryPrayer(_ prayerName: String, prayerTimes: PrayerTimes) -> Bool {
+        // Only obligatory prayers can be marked as "next"
+        let obligatoryPrayerNames = ["Fajr", "Dhuhr", "Asr", "Maghrib", "Isha"]
+        guard obligatoryPrayerNames.contains(prayerName) else {
+            return false // Shrouq can never be "next"
+        }
+        
+        let nextPrayerInfo = nextPrayer(prayerTimes: prayerTimes)
+        return prayerName == nextPrayerInfo.name
+    }
+    
     // MARK: - Computed Properties
     
     private func nextPrayer(prayerTimes: PrayerTimes) -> (name: String, time: Date, arabicName: String) {
-        let prayers = prayerTimes.allPrayers
+        // Define obligatory prayers only (excluding Shrouq)
+        let obligatoryPrayers = [
+            ("Fajr", prayerTimes.fajr, "الفجر"),
+            ("Dhuhr", prayerTimes.dhuhr, "الظهر"),
+            ("Asr", prayerTimes.asr, "العصر"),
+            ("Maghrib", prayerTimes.maghrib, "المغرب"),
+            ("Isha", prayerTimes.isha, "العشاء")
+        ]
         
-        // Find the next prayer
-        for prayer in prayers {
-            if prayer.time > currentTime {
+        // Debug logging
+        let debugFormatter = DateFormatter()
+        debugFormatter.timeStyle = .short
+        debugFormatter.dateStyle = .none
+        
+        print("🔍 ===== NEXT PRAYER DEBUGGING =====")
+        print("🕐 Current Time: \(debugFormatter.string(from: currentTime)) (\(currentTime))")
+        print("📅 Prayer Times for Today:")
+        print("   Fajr: \(debugFormatter.string(from: prayerTimes.fajr))")
+        print("   Shrouq: \(debugFormatter.string(from: prayerTimes.sunrise)) ⚠️ (EXCLUDED from next prayer logic)")
+        print("   Dhuhr: \(debugFormatter.string(from: prayerTimes.dhuhr))")
+        print("   Asr: \(debugFormatter.string(from: prayerTimes.asr))")
+        print("   Maghrib: \(debugFormatter.string(from: prayerTimes.maghrib))")
+        print("   Isha: \(debugFormatter.string(from: prayerTimes.isha))")
+        print("")
+        
+        // Find the next obligatory prayer
+        for (index, prayer) in obligatoryPrayers.enumerated() {
+            let isAfterCurrent = prayer.1 > currentTime
+            print("🔍 Checking \(prayer.0): \(debugFormatter.string(from: prayer.1)) - After current? \(isAfterCurrent)")
+            
+            if isAfterCurrent {
+                print("✅ SELECTED NEXT PRAYER: \(prayer.0) at \(debugFormatter.string(from: prayer.1))")
+                print("🔍 ===== END DEBUGGING =====")
                 return prayer
             }
         }
         
         // If no prayer is left today, return Fajr of tomorrow
+        print("⏰ All prayers for today have passed, calculating tomorrow's Fajr...")
         let calendar = Calendar.current
         let tomorrow = calendar.date(byAdding: .day, value: 1, to: currentTime) ?? currentTime
         
-        // We would need to fetch tomorrow's times, but for now return estimated Fajr
-        let tomorrowFajr = calendar.date(bySettingHour: 5, minute: 30, second: 0, of: tomorrow) ?? tomorrow
+        // Create tomorrow's Fajr based on today's Fajr time but on tomorrow's date
+        let fajrComponents = calendar.dateComponents([.hour, .minute], from: prayerTimes.fajr)
+        let tomorrowFajr = calendar.date(bySettingHour: fajrComponents.hour ?? 5, 
+                                       minute: fajrComponents.minute ?? 30, 
+                                       second: 0, 
+                                       of: tomorrow) ?? tomorrow
+        
+        print("✅ SELECTED NEXT PRAYER: Tomorrow's Fajr at \(debugFormatter.string(from: tomorrowFajr))")
+        print("🔍 ===== END DEBUGGING =====")
         
         return ("Fajr", tomorrowFajr, "الفجر")
     }
