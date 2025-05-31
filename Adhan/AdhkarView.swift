@@ -60,7 +60,7 @@ struct AdhkarView: View {
                                 category: .afterPrayer,
                                 titleKey: "adhkar_after_prayer_title",
                                 arabicTitle: "اذكار بعد الصلاة",
-                                icon: "hands.sparkles",
+                                icon: "hands.and.sparkles.fill",
                                 gradientColors: [Color.green.opacity(0.8), Color.teal.opacity(0.6)]
                             )
                         }
@@ -144,14 +144,14 @@ struct AdhkarCategorySquare: View {
         .shadow(color: .black.opacity(0.2), radius: 8, x: 0, y: 4)
         .scaleEffect(isPressed ? 0.95 : 1.0)
         .animation(.easeInOut(duration: 0.1), value: isPressed)
-        .onTapGesture {
-            // Haptic feedback
-            let impactFeedback = UIImpactFeedbackGenerator(style: .light)
-            impactFeedback.impactOccurred()
-        }
         .simultaneousGesture(
             DragGesture(minimumDistance: 0)
-                .onChanged { _ in isPressed = true }
+                .onChanged { _ in 
+                    isPressed = true
+                    // Haptic feedback
+                    let impactFeedback = UIImpactFeedbackGenerator(style: .light)
+                    impactFeedback.impactOccurred()
+                }
                 .onEnded { _ in isPressed = false }
         )
     }

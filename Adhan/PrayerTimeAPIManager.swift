@@ -247,8 +247,19 @@ class PrayerTimeAPIManager: ObservableObject {
     }
     
     private func convertToPrayerTimes(from data: PrayerDayData) -> PrayerTimes {
+        // Set up formatter for parsing API time strings
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
+        
+        // Use the timezone from API meta if available, otherwise default to Saudi timezone
+        if let timezoneName = data.meta?.timezone {
+            formatter.timeZone = TimeZone(identifier: timezoneName)
+            print("🌍 Using API timezone: \(timezoneName)")
+        } else {
+            // Default to Saudi Arabia timezone for Riyadh
+            formatter.timeZone = TimeZone(identifier: "Asia/Riyadh")
+            print("🌍 Using default timezone: Asia/Riyadh")
+        }
         
         let today = Date()
         
@@ -259,13 +270,26 @@ class PrayerTimeAPIManager: ObservableObject {
         let maghrib = createTime(from: data.timings.Maghrib, date: today, formatter: formatter)
         let isha = createTime(from: data.timings.Isha, date: today, formatter: formatter)
         
-        print("🕐 Converted prayer times:")
-        print("   Fajr: \(DateFormatter.debugTime.string(from: fajr))")
-        print("   Shrouq: \(DateFormatter.debugTime.string(from: sunrise))")
-        print("   Dhuhr: \(DateFormatter.debugTime.string(from: dhuhr))")
-        print("   Asr: \(DateFormatter.debugTime.string(from: asr))")
-        print("   Maghrib: \(DateFormatter.debugTime.string(from: maghrib))")
-        print("   Isha: \(DateFormatter.debugTime.string(from: isha))")
+        // Debug printing with proper timezone consideration
+        let debugFormatter = DateFormatter()
+        debugFormatter.timeStyle = .short
+        debugFormatter.timeZone = formatter.timeZone
+        
+        print("🕐 Raw API prayer times:")
+        print("   Fajr: \(data.timings.Fajr)")
+        print("   Sunrise: \(data.timings.Sunrise ?? "N/A")")
+        print("   Dhuhr: \(data.timings.Dhuhr)")
+        print("   Asr: \(data.timings.Asr)")
+        print("   Maghrib: \(data.timings.Maghrib)")
+        print("   Isha: \(data.timings.Isha)")
+        
+        print("🕐 Converted prayer times (Local time):")
+        print("   Fajr: \(debugFormatter.string(from: fajr))")
+        print("   Shrouq: \(debugFormatter.string(from: sunrise))")
+        print("   Dhuhr: \(debugFormatter.string(from: dhuhr))")
+        print("   Asr: \(debugFormatter.string(from: asr))")
+        print("   Maghrib: \(debugFormatter.string(from: maghrib))")
+        print("   Isha: \(debugFormatter.string(from: isha))")
         
         return PrayerTimes(
             fajr: fajr,
@@ -282,15 +306,23 @@ class PrayerTimeAPIManager: ObservableObject {
         // Remove timezone info if present (e.g., "05:30 (+03)" -> "05:30")
         let cleanTimeString = timeString.components(separatedBy: " ").first ?? timeString
         
+        print("🔧 Parsing time: '\(timeString)' -> '\(cleanTimeString)'")
+        
         if let time = formatter.date(from: cleanTimeString) {
             let calendar = Calendar.current
             let timeComponents = calendar.dateComponents([.hour, .minute], from: time)
-            return calendar.date(bySettingHour: timeComponents.hour ?? 0,
-                               minute: timeComponents.minute ?? 0,
-                               second: 0,
-                               of: date) ?? date
+            
+            // Create the time for today in the correct timezone
+            let finalDate = calendar.date(bySettingHour: timeComponents.hour ?? 0,
+                                        minute: timeComponents.minute ?? 0,
+                                        second: 0,
+                                        of: date) ?? date
+            
+            print("   ✅ Parsed: \(timeComponents.hour ?? 0):\(String(format: "%02d", timeComponents.minute ?? 0))")
+            return finalDate
         }
         
+        print("   ❌ Failed to parse time: \(timeString)")
         return date
     }
 }
