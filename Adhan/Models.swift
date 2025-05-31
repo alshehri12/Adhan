@@ -113,7 +113,7 @@ enum AdhkarCategory: String, CaseIterable {
         switch self {
         case .morning: return "sun.and.horizon"
         case .evening: return "moon.and.stars"
-        case .afterPrayer: return "hands.sparkles"
+        case .afterPrayer: return "hands.and.sparkles.fill"
         }
     }
 }
@@ -140,109 +140,79 @@ extension PrayerTimes {
 extension Adhkar {
     static var sampleAdhkar: [Adhkar] {
         return [
-            // MARK: - Morning Adhkar
+            // MARK: - Morning Adhkar (أذكار الصباح)
             Adhkar(
-                arabicText: "أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ",
-                transliteration: "Asbahna wa asbahal-mulku lillah, walhamdu lillah, la ilaha illa Allah wahdahu la shareeka lah, lahul-mulku wa lahul-hamdu wa huwa ala kulli shay'in qadeer",
-                englishTranslation: "We have reached the morning and with it Allah's dominion, and praise is to Allah. There is no god but Allah alone, with no partner. To Him belongs sovereignty and praise, and He is capable of all things.",
-                frenchTranslation: "Nous avons atteint le matin et avec lui la domination d'Allah, et la louange est à Allah. Il n'y a de dieu qu'Allah seul, sans associé. À Lui appartient la souveraineté et la louange, et Il est capable de toutes choses.",
-                urduTranslation: "ہم نے صبح کی اور اللہ کی بادشاہت کے ساتھ صبح ہوئی، اور تمام تعریف اللہ کے لیے ہے۔ اللہ کے سوا کوئی معبود نہیں، وہ اکیلا ہے، اس کا کوئی شریک نہیں، اسی کی بادشاہت ہے اور اسی کے لیے تعریف ہے اور وہ ہر چیز پر قادر ہے۔",
+                arabicText: "اللَّهُمَّ بِكَ أَصْبَحْنَا، وَبِكَ أَمْسَيْنَا، وَبِكَ نَحْيَا، وَبِكَ نَمُوتُ، وَإِلَيْكَ النُّشُورُ",
+                transliteration: "Allahumma bika asbahna, wa bika amsayna, wa bika nahya, wa bika namootu, wa ilaykan-nushoor",
+                englishTranslation: "O Allah, by Your leave we have reached morning, and by Your leave we have reached evening, and by Your leave we live, and by Your leave we die, and to You is the resurrection.",
+                frenchTranslation: "Ô Allah, par Toi nous atteignons le matin, et par Toi nous atteignons le soir, et par Toi nous vivons, et par Toi nous mourons, et c'est vers Toi que nous serons ressuscités.",
+                urduTranslation: "اے اللہ! تیری مدد سے ہم نے صبح کی، اور تیری مدد سے ہم نے شام کی، اور تیری مدد سے ہم زندہ ہیں، اور تیری مدد سے ہم مریں گے، اور تیری طرف ہی اٹھنا ہے۔",
                 category: .morning,
                 repeatCount: 1,
                 source: "Muslim"
             ),
             Adhkar(
-                arabicText: "اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلَّا أَنْتَ، خَلَقْتَنِي وَأَنَا عَبْدُكَ، وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ",
-                transliteration: "Allahumma anta rabbi la ilaha illa ant, khalaqtani wa ana abduk, wa ana ala ahdika wa wa'dika mastata't",
-                englishTranslation: "O Allah, You are my Lord, there is no god but You. You created me and I am Your servant, and I am faithful to my covenant and promise to You as much as I can.",
-                frenchTranslation: "Ô Allah, Tu es mon Seigneur, il n'y a de dieu que Toi. Tu m'as créé et je suis Ton serviteur, et je reste fidèle à mon alliance et à ma promesse envers Toi autant que je le peux.",
-                urduTranslation: "اے اللہ! تو ہی میرا رب ہے، تیرے سوا کوئی معبود نہیں، تو نے مجھے پیدا کیا اور میں تیرا بندہ ہوں، اور میں اپنی استطاعت کے مطابق تیرے عہد اور وعدے پر قائم ہوں۔",
+                arabicText: "اللَّهُمَّ أَنْتَ رَبِّي لاَ إِلَهَ إِلاَّ أَنْتَ، خَلَقْتَنِي وَأَنَا عَبْدُكَ، وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ، أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ، أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَيَّ، وَأَبُوءُ بِذَنْبِي فَاغْفِرْ لِي، فَإِنَّهُ لاَ يَغْفِرُ الذُّنُوبَ إِلاَّ أَنْتَ",
+                transliteration: "Allahumma anta Rabbi la ilaha illa anta, khalaqtani wa ana 'abduka, wa ana 'ala 'ahdika wa wa'dika mastata'tu. A'udhu bika min sharri ma sana'tu, aboo'u laka bi ni'matika 'alayya, wa aboo'u bi dhanbi faghfir li, fa innahu la yaghfirudh-dhunooba illa ant",
+                englishTranslation: "O Allah, You are my Lord, there is no god but You. You created me and I am Your servant, and I am abiding by Your covenant and Your promise as best as I can. I seek refuge in You from the evil of what I have done. I acknowledge Your blessings upon me, and I acknowledge my sins, so forgive me, for none forgives sins except You.",
+                frenchTranslation: "Ô Allah, Tu es mon Seigneur, il n'y a de divinité que Toi. Tu m'as créé et je suis Ton serviteur, et je m'en tiens à Ton pacte et à Ta promesse autant que je le peux. Je cherche refuge auprès de Toi contre le mal que j'ai commis. Je reconnais Tes bienfaits sur moi et je reconnais mes péchés, alors pardonne-moi, car personne ne pardonne les péchés sauf Toi.",
+                urduTranslation: "اے اللہ، تو میرا رب ہے، تیرے سوا کوئی معبود نہیں، تو نے مجھے پیدا کیا اور میں تیرا بندہ ہوں، اور میں اپنی استطاعت کے مطابق تیرے عہد اور وعدے پر قائم ہوں۔ میں اپنے کیے ہوئے کاموں کی برائی سے تیری پناہ مانگتا ہوں۔ میں اپنے اوپر تیری نعمتوں کا اقرار کرتا ہوں، اور میں اپنے گناہوں کا اقرار کرتا ہوں، پس مجھے بخش دے، کیونکہ تیرے سوا کوئی گناہوں کو نہیں بخشتا۔",
                 category: .morning,
                 repeatCount: 1,
                 source: "Bukhari"
             ),
             Adhkar(
-                arabicText: "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ",
-                transliteration: "Subhan Allah wa bihamdihi",
-                englishTranslation: "Glory is to Allah and praise is to Him",
-                frenchTranslation: "Gloire à Allah et louange à Lui",
-                urduTranslation: "اللہ پاک ہے اور اس کی تعریف کے ساتھ",
+                arabicText: "أَصْبَحْنَا عَلَى فِطْرَةِ الإِسْلاَمِ، وَعَلَى كَلِمَةِ الإِخْلاَصِ، وَعَلَى دِينِ نَبِيِّنَا مُحَمَّدٍ صلى الله عليه وسلم، وَعَلَى مِلَّةِ أَبِينَا إِبْرَاهِيمَ حَنِيفًا مُسْلِمًا وَمَا كَانَ مِنَ الْمُشْرِكِينَ",
+                transliteration: "Asbahna 'ala fitratil-Islam, wa 'ala kalimatil-ikhlas, wa 'ala deeni Nabiyyina Muhammad (s.a.w.), wa 'ala millati abeena Ibraheema haneefan musliman wama kana minal-mushrikeen",
+                englishTranslation: "We have entered morning upon the natural disposition of Islam, and upon the word of sincerity, and upon the religion of our Prophet Muhammad (peace be upon him), and upon the faith of our father Ibrahim, who was upright in submission and was not of the polytheists.",
+                frenchTranslation: "Nous sommes entrés dans le matin sur la disposition naturelle de l'Islam, et sur la parole de sincérité, et sur la religion de notre Prophète Muhammad (que la paix soit sur lui), et sur la foi de notre père Ibrahim, qui était droit et soumis, et qui n'était pas des polythéistes.",
+                urduTranslation: "ہم نے اسلام کی فطرت پر صبح کی، اور کلمہ اخلاص پر، اور ہمارے نبی محمد صلی اللہ علیہ وسلم کے دین پر، اور ہمارے والد ابراہیم کے ملت پر صبح کی، جو سیدھے راستے پر چلنے والے مسلم تھے اور مشرکوں میں سے نہیں تھے۔",
                 category: .morning,
-                repeatCount: 100,
-                source: "Bukhari & Muslim"
-            ),
-            
-            // MARK: - Evening Adhkar
-            Adhkar(
-                arabicText: "أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ",
-                transliteration: "Amsayna wa amsal-mulku lillah, walhamdu lillah, la ilaha illa Allah wahdahu la shareeka lah, lahul-mulku wa lahul-hamdu wa huwa ala kulli shay'in qadeer",
-                englishTranslation: "We have reached the evening and with it Allah's dominion, and praise is to Allah. There is no god but Allah alone, with no partner. To Him belongs sovereignty and praise, and He is capable of all things.",
-                frenchTranslation: "Nous avons atteint le soir et avec lui la domination d'Allah, et la louange est à Allah. Il n'y a de dieu qu'Allah seul, sans associé. À Lui appartient la souveraineté et la louange, et Il est capable de toutes choses.",
-                urduTranslation: "ہم نے شام کی اور اللہ کی بادشاہت کے ساتھ شام ہوئی، اور تمام تعریف اللہ کے لیے ہے۔ اللہ کے سوا کوئی معبود نہیں، وہ اکیلا ہے، اس کا کوئی شریک نہیں، اسی کی بادشاہت ہے اور اسی کے لیے تعریف ہے اور وہ ہر چیز پر قادر ہے۔",
-                category: .evening,
                 repeatCount: 1,
                 source: "Muslim"
             ),
+            
+            // MARK: - Evening Adhkar (أذكار المساء)
             Adhkar(
                 arabicText: "اللَّهُمَّ بِكَ أَمْسَيْنَا، وَبِكَ أَصْبَحْنَا، وَبِكَ نَحْيَا، وَبِكَ نَمُوتُ، وَإِلَيْكَ الْمَصِيرُ",
-                transliteration: "Allahumma bika amsayna, wa bika asbahna, wa bika nahya, wa bika namoot, wa ilaykal-maseer",
-                englishTranslation: "O Allah, by You we have reached the evening, by You we have reached the morning, by You we live, by You we die, and to You is the return.",
-                frenchTranslation: "Ô Allah, par Toi nous avons atteint le soir, par Toi nous avons atteint le matin, par Toi nous vivons, par Toi nous mourrons, et vers Toi est le retour.",
-                urduTranslation: "اے اللہ! تیرے ذریعے ہم نے شام کی، تیرے ذریعے ہم نے صبح کی، تیرے ذریعے ہم زندہ ہیں، تیرے ذریعے ہم مریں گے، اور تیری طرف ہی واپسی ہے۔",
+                transliteration: "Allahumma bika amsayna, wa bika asbahna, wa bika nahya, wa bika namootu, wa ilaykal-maseer",
+                englishTranslation: "O Allah, by Your leave we have reached evening, and by Your leave we have reached morning, and by Your leave we live, and by Your leave we die, and to You is the return.",
+                frenchTranslation: "Ô Allah, par Toi nous atteignons le soir, et par Toi nous atteignons le matin, et par Toi nous vivons, et par Toi nous mourons, et c'est vers Toi que sera le retour.",
+                urduTranslation: "اے اللہ! تیری مدد سے ہم نے شام کی، اور تیری مدد سے ہم نے صبح کی، اور تیری مدد سے ہم زندہ ہیں، اور تیری مدد سے ہم مریں گے، اور تیری طرف ہی لوٹنا ہے۔",
                 category: .evening,
                 repeatCount: 1,
-                source: "Abu Dawud & At-Tirmidhi"
-            ),
-            Adhkar(
-                arabicText: "أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ",
-                transliteration: "A'udhu bikalimatillahit-tammati min sharri ma khalaq",
-                englishTranslation: "I seek refuge in the perfect words of Allah from the evil of what He has created",
-                frenchTranslation: "Je cherche refuge dans les paroles parfaites d'Allah contre le mal de ce qu'Il a créé",
-                urduTranslation: "میں اللہ کے مکمل کلمات کی پناہ مانگتا ہوں اس کی مخلوقات کے شر سے",
-                category: .evening,
-                repeatCount: 3,
                 source: "Muslim"
             ),
+            Adhkar(
+                arabicText: "اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ ۚ لَّهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ ۗ مَن ذَا الَّذِي يَشْفَعُ عِندَهُ إِلَّا بِإِذْنِهِ ۚ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ ۖ وَلَا يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلَّا بِمَا شَاءَ ۚ وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ ۖ وَلَا يَئُودُهُ حِفْظُهُمَا ۚ وَهُوَ الْعَلِيُّ الْعَظِيمُ",
+                transliteration: "Allahu la ilaha illa Huwa, Al-Hayyul-Qayyum. La ta'khudhuhu sinatun wa la nawm. Lahu ma fis-samawati wa ma fil-ard. Man dhal-ladhi yashfa'u 'indahu illa bi idhnihi. Ya'lamu ma bayna aydeehim wa ma khalfahum, wa la yuheetuna bi shay'in min 'ilmihi illa bima sha'a. Wasi'a Kursiyyuhus-samawati wal-ard. Wa la ya'ooduhu hifdhuhuma. Wa Huwal-'Aliyyul-Azeem",
+                englishTranslation: "Allah! There is no god but He, the Ever-Living, the Sustainer of existence. Neither slumber nor sleep overtakes Him. To Him belongs whatever is in the heavens and whatever is on the earth. Who is it that can intercede with Him except by His permission? He knows what is before them and what will be behind them, and they encompass not a thing of His knowledge except for what He wills. His Kursi extends over the heavens and the earth, and He feels no fatigue in guarding and preserving them. And He is the Most High, the Most Great.",
+                frenchTranslation: "Allah ! Il n'y a de divinité que Lui, le Vivant, Celui qui subsiste par Lui-même. Ni somnolence ni sommeil ne Le saisissent. À Lui appartient tout ce qui est dans les cieux et tout ce qui est sur la terre. Qui peut intercéder auprès de Lui sans Sa permission ? Il connaît ce qui est devant eux et ce qui est derrière eux. Et ils n'embrassent de Sa science que ce qu'Il veut. Son Trône s'étend sur les cieux et la terre, et leur garde ne Lui coûte aucune peine. Et Il est le Très Haut, le Très Grand.",
+                urduTranslation: "اللہ کے سوا کوئی معبود نہیں، وہ زندہ جاوید، سب کو سنبھالنے والا ہے۔ اسے نہ اونگھ آتی ہے اور نہ نیند۔ اسی کا ہے جو کچھ آسمانوں میں ہے اور جو کچھ زمین میں ہے۔ کون ہے جو اس کی اجازت کے بغیر اس کے حضور شفاعت کر سکے؟ وہ جانتا ہے جو کچھ ان کے سامنے ہے اور جو کچھ ان کے پیچھے ہے۔ اور وہ اس کے علم میں سے کسی چیز کا احاطہ نہیں کر سکتے مگر جتنا وہ چاہے۔ اس کی کرسی آسمانوں اور زمین پر وسیع ہے۔ اور اسے ان دونوں کی حفاظت تھکاتی نہیں۔ اور وہ بلند ہے، بہت بڑا ہے۔",
+                category: .evening,
+                repeatCount: 1,
+                source: "Quran 2:255"
+            ),
             
-            // MARK: - After Prayer Adhkar
+            // MARK: - After Prayer Adhkar (أذكار بعد الصلاة)
             Adhkar(
-                arabicText: "سُبْحَانَ اللَّهِ",
-                transliteration: "Subhan Allah",
-                englishTranslation: "Glory is to Allah",
-                frenchTranslation: "Gloire à Allah",
-                urduTranslation: "اللہ پاک ہے",
+                arabicText: "أَسْتَغْفِرُ اللَّهَ (ثلاث مرات) اللَّهُمَّ أَنْتَ السَّلاَمُ، وَمِنْكَ السَّلاَمُ، تَبَارَكْتَ يَا ذَا الْجَلاَلِ وَالإِكْرَامِ",
+                transliteration: "Astaghfirullah (x3). Allahumma Antas-Salam, wa minkas-salam, tabarakta ya Dhal-Jalali wal-Ikram",
+                englishTranslation: "I seek Allah's forgiveness (3 times). O Allah, You are Peace, and from You comes peace. Blessed are You, O Possessor of Majesty and Honor.",
+                frenchTranslation: "Je demande pardon à Allah (3 fois). Ô Allah, Tu es la Paix, et de Toi vient la paix. Béni sois-Tu, Ô Possesseur de la Majesté et de l'Honneur.",
+                urduTranslation: "میں اللہ سے مغفرت طلب کرتا ہوں (تین بار)۔ اے اللہ، تو ہی سلامتی ہے، اور تجھ ہی سے سلامتی ہے، تو بڑا بابرکت ہے، اے عظمت اور بزرگی والے۔",
                 category: .afterPrayer,
-                repeatCount: 33,
-                source: "Bukhari & Muslim"
+                repeatCount: 1,
+                source: "Muslim"
             ),
             Adhkar(
-                arabicText: "الْحَمْدُ لِلَّهِ",
-                transliteration: "Alhamdulillah",
-                englishTranslation: "Praise is to Allah",
-                frenchTranslation: "Louange à Allah",
-                urduTranslation: "تمام تعریف اللہ کے لیے",
+                arabicText: "سُبْحَانَ اللَّهِ (33 مرة) الْحَمْدُ لِلَّهِ (33 مرة) اللَّهُ أَكْبَرُ (33 مرة) لاَ إِلَهَ إِلاَّ اللَّهُ وَحْدَهُ لاَ شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ",
+                transliteration: "Subhanallah (x33). Alhamdulillah (x33). Allahu Akbar (x33). La ilaha illallahu wahdahu la shareeka lahu, lahul-mulku wa lahul-hamdu, wa Huwa 'ala kulli shay'in Qadeer",
+                englishTranslation: "Glory be to Allah (33 times). All praise is due to Allah (33 times). Allah is the Greatest (33 times). There is no god but Allah alone, He has no partner. To Him belongs all sovereignty and all praise, and He is over all things omnipotent.",
+                frenchTranslation: "Gloire à Allah (33 fois). Louange à Allah (33 fois). Allah est le Plus Grand (33 fois). Il n'y a de dieu qu'Allah seul, Il n'a pas d'associé. À Lui appartient la royauté et à Lui les louanges, et Il est Omnipotent sur toute chose.",
+                urduTranslation: "اللہ پاک ہے (33 بار)۔ تمام تعریفیں اللہ کے لیے ہیں (33 بار)۔ اللہ سب سے بڑا ہے (33 بار)۔ اللہ کے سوا کوئی معبود نہیں، وہ اکیلا ہے، اس کا کوئی شریک نہیں۔ اسی کی بادشاہی ہے اور اسی کے لیے تمام تعریفیں ہیں، اور وہ ہر چیز پر قادر ہے۔",
                 category: .afterPrayer,
-                repeatCount: 33,
-                source: "Bukhari & Muslim"
-            ),
-            Adhkar(
-                arabicText: "اللَّهُ أَكْبَرُ",
-                transliteration: "Allahu Akbar",
-                englishTranslation: "Allah is the Greatest",
-                frenchTranslation: "Allah est le Plus Grand",
-                urduTranslation: "اللہ سب سے بڑا ہے",
-                category: .afterPrayer,
-                repeatCount: 34,
-                source: "Bukhari & Muslim"
-            ),
-            Adhkar(
-                arabicText: "رَبِّ اغْفِرْ لِي ذَنْبِي وَخَطَئِي وَجَهْلِي",
-                transliteration: "Rabbi ghfir li dhanbi wa khata'i wa jahli",
-                englishTranslation: "My Lord, forgive my sin, my mistake, and my ignorance",
-                frenchTranslation: "Mon Seigneur, pardonne mon péché, mon erreur et mon ignorance",
-                urduTranslation: "اے میرے رب! میرے گناہ، میری خطا اور میری جہالت کو معاف فرما",
-                category: .afterPrayer,
-                repeatCount: 3,
+                repeatCount: 99,
                 source: "Bukhari & Muslim"
             )
         ]
